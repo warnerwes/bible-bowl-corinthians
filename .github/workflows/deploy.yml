@@ -1,0 +1,51 @@
+name: Deploy to GitHub Pages
+
+# MANUAL-ONLY for now: this site does NOT auto-publish on push.
+# To GO LIVE at https://warnerwes.github.io/bible-bowl-corinthians/ :
+#   - GitHub UI: Actions tab -> "Deploy to GitHub Pages" -> Run workflow, OR
+#   - CLI: gh workflow run "Deploy to GitHub Pages" -R warnerwes/bible-bowl-corinthians
+# The first run auto-enables Pages (source = GitHub Actions).
+# To auto-publish on every push later, add a `push: branches: [main]` trigger below.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Assemble _site (static files only)
+        run: |
+          mkdir -p _site
+          cp index.html reading.html styles.css *.js _site/
+          cp -r data _site/data
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
