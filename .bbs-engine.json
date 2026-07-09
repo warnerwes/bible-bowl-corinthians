@@ -1,6 +1,6 @@
 {
   "engineSource": "warnerwes/bible-bowl-study",
-  "engineCommit": "9af829070a1d1ce259fb59661a3f0a9892236e08",
+  "engineCommit": "5f1a33a",
   "enginePath": "engine/src",
   "note": "Engine JS in this repo is a copy assembled by generator/pilots/corinthians/build-site.mjs. To update, regenerate in bible-bowl-study and re-copy the _site/ contents here."
 }
