@@ -1,3 +1,8 @@
 node_modules/
 _site/
 .DS_Store
+
+# Secrets — API.Bible key lives in the NAS store (codex-secrets/apibible.env), never here
+.env
+.env.*
+!.env.example

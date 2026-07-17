@@ -1,4 +1,8 @@
-# Bible Bowl Study — 1 & 2 Corinthians (pilot)
+# Bible Bowl Study — 1 & 2 Corinthians (pilot) — MOVED
+
+> **This site has moved to <https://bible-bowl-study.web.app/>** (Firebase
+> Hosting, served from the `bible-bowl-study` repo). The GitHub Pages site now
+> only redirects there. This repo is frozen as a historical snapshot.
 
 A self-contained static quiz + reading-plan site covering **1 & 2 Corinthians**,
 built from the config-driven engine in
